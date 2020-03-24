@@ -16,3 +16,4 @@ bin/
 /text-ui-test/ACTUAL.txt
 
 *.log
+*.json

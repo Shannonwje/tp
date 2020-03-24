@@ -1,7 +1,8 @@
+//@@author Shannonwje
+
 package seedu.duke.commands;
 
 import seedu.duke.data.Item;
-import seedu.duke.data.ShoppingList;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

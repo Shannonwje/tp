@@ -1,5 +1,6 @@
 package seedu.duke.commands;
 
+//@@author trishaangelica
 /**
  * Shows help instructions.
  */
@@ -26,3 +27,4 @@ public class HelpCommand extends Command {
                 + ExitCommand.MESSAGE_USAGE + System.lineSeparator();
     }
 }
+//@@author

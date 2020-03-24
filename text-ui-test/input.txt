@@ -15,14 +15,14 @@ SET b/500.00
 EDIT
 EDIT wrong args format
 EDIT i/tomato p/3.40
-EDIT 1 i/p/2.50
-EDIT 1 i/apple p/
-EDIT 1 i/TOMATO p/WERT
-EDIT 1 i/p/
-EDIT 1 i/apples
-EDIT 1 i/apple p/2.50
-EDIT 2 p/6.50 i/bananas
-EDIT 3 p/8.00
+EDIT 1 i/p/q/
+EDIT 1 i/lollipops i/lollipop
+EDIT 1 p/QWERT
+EDIT 1 p/2 i/banana
+EDIT 2 i/apple
+EDIT 1 i/lollipops p/2.50 q/5
+EDIT 1 p/1
+EDIT 1 q/4
 MARK
 MARK 1
 MARK 2

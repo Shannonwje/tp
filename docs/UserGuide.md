@@ -1,33 +1,59 @@
-# User Guide
+# SHOCO v1.0 - User Guide
 
 ## Introduction
 
-{Give a product intro}
+SHOCO is a command-line interface (CLI) application that allows users to 
+manage and plan their shopping lists and budget. If you are a fast typer, 
+you will find SHOCO to be even more effective than applications with graphical 
+user interfaces.
+
 
 ## Quick Start
 
-{Give steps to get started quickly}
-
 1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Duke` from [here](http://link.to/duke).
+1. Download the latest version of `SHOCO` from [here](https://github.com/AY1920S2-CS2113T-T13-1/tp/releases).
 
 ## Features 
 
 {Give detailed description of each feature}
 
-### Adding a to-do: `todo`
-Adds a to-do item to the list of to-dos.
+### Deleting an item: `DEL`
+Removes an item from the list at the specified index.
 
-Format: `todo n/TODO_NAME d/DEADLINE`
+Format: `DEL [index]`
 
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.  
+* The `[index]` should be an integer.
+* The `[index]` should not be out of bounds of the shopping list.  
 
 Example of usage: 
 
-`todo n/Write the rest of the User Guide d/next week`
+`DEL 3`
 
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
+
+### Setting a budget: `SET`
+Sets a budget for the user.
+
+Format: `SET b/[amount]`
+
+* The `[amount]` can be any double that is between 0 to 5000.
+* The `b/` substring should be present in the command.  
+
+Example of usage: 
+
+`SET b/3.00`
+
+### Finding an item: `FIND`
+Filters the shopping list according to a keyword specified by the user.
+
+Format: `FIND [keyword]`
+
+* The `[keyword]` can be any character or string.
+* The `[keyword]` field should not be left empty.  
+
+Example of usage: 
+
+`FIND apple`
+
 
 ## FAQ
 
@@ -40,3 +66,6 @@ Example of usage:
 {Give a 'cheat sheet' of commands here}
 
 * Add to-do `todo n/TODO_NAME d/DEADLINE`
+* Delete item `DEL [index]`
+* Set budget `SET b/[amount]`
+* Find item `FIND [keyword]`

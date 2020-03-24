@@ -55,11 +55,12 @@ public class FindCommand extends Command {
             System.out.println(FIND_MESSAGE);
             CommandLineTable st = new CommandLineTable();
             st.setShowVerticalLines(true);
-            st.setHeaders("Item", "Price");
+            st.setHeaders("Item", "Price","Qty");
             for (int i = 0; i < filteredItems.size(); i++) {
                 String itemLine = indexArray[i] + ". [" + filteredItems.get(i).getStatusIcon()
                         + "] " + filteredItems.get(i).getDescription();
-                st.addRow(itemLine, String.format("$%.2f", filteredItems.get(i).getPrice()));
+                st.addRow(itemLine, String.format("$%.2f", filteredItems.get(i).getPrice()),
+                        String.format("%d",filteredItems.get(i).getQuantity()));
             }
             st.print();
             LOGGER.log(Level.INFO,"(Find command) Results displayed successfully");

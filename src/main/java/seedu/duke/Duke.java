@@ -3,8 +3,9 @@ package seedu.duke;
 import seedu.duke.commands.Command;
 import seedu.duke.data.Budget;
 import seedu.duke.data.ShoppingList;
-import seedu.duke.utils.Parser;
 import seedu.duke.ui.Ui;
+import seedu.duke.utils.Parser;
+import seedu.duke.utils.Storage;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class Duke {
 
     private static Budget myBudget = new Budget();
     private static ShoppingList items = new ShoppingList();
+    private Storage storage = new Storage();
     private static Ui ui = new Ui();
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private static final String DEFAULT_FILEPATH = "Logger.log";
@@ -67,12 +69,15 @@ public class Duke {
      * Prints the welcome message.
      */
     private void start() {
+        items = storage.loadShoppingList();
+        myBudget = storage.loadBudget();
         LOGGER.log(Level.INFO,"Application starting.");
         ui.greet();
     }
 
     /** Prints the Goodbye message and exits. */
     private void exit() {
+        storage.saveAll(items, myBudget);
         ui.bidFarewell();
         LOGGER.log(Level.INFO,"Application shutting down");
         System.exit(0);

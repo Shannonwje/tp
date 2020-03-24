@@ -4,6 +4,7 @@ public class Item {
 
     private double price;
     private String description;
+    private int quantity;
     private boolean isBought;
     private static final String BOUGHT = "B";
     private static final String NOT_BOUGHT = "0";
@@ -13,22 +14,34 @@ public class Item {
      *
      * @param description Name of the object.
      * @param price Price of the object
+     * @param quantity Quantity of the object
      */
-    public Item(String description,double price) {
+    public Item(String description,double price,int quantity) {
         this.price = price;
         this.description = description;
+        this.quantity = quantity;
         this.isBought = false;
     }
 
     /**
-     * Constructs an Item object with only description provided and no price indicated.
+     * Constructs an Item object with the provided description and price.
      *
      * @param description Name of the object.
+     * @param price Price of the object
      */
-    public Item(String description) {
-        this.price = 0.0;
+    public Item(String description,double price) { // constructor can be removed when Add Command deals with qty
+        this.price = price;
         this.description = description;
+        this.quantity = 1;
         this.isBought = false;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public void setPrice(double price) {
@@ -70,7 +83,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return "[" + getStatusIcon() + "] " + description + String.format(" $%.2f", price);
+        return "[" + getStatusIcon() + "] " + description + String.format(" $%.2f", price) + " qty: " + quantity;
     }
 
 }
