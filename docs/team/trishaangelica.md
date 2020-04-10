@@ -1,30 +1,30 @@
 <!-- @@author trishaangelica -->
-# Trisha Labi - Project Portfolio
+# Labi Trisha Angelica Vergara - Project Portfolio
 ## PROJECT: SHOCO 
 
 ## Overview
 
-SHOCO is a desktop application used for the managing and planning of shopping lists and budget. Users interact with it through the use of a command-line interface (CLI), the program is written in Java and has bout 5 kLoC.
+SHOCO is a desktop application used for the managing and planning of shopping lists and budgets. Users interact with it through the use of a command-line interface (CLI), the program is written in Java and has bout 5 kLoC.
 
 ### Summary of Contributions
 * **Major enhancement 1:** Included the **ability to edit items** in the shopping list.
-    * What it does: Allows the user to update values of the items in the shopping list. Such values are the description, price and quantity of the item.
-    * Justification: This feature improves the product significantly because a user can make mistakes when adding an item (e.g typos made) and the app should provide a convenient way to rectify these mistake.
-    * Highlights: This enhancement allows the user to update any value. The edit command does not require any order in it's input (e.g alphabetical ordering of delimiters).
-* **Minor enhancement 1:** Negative values entered for price and quantity are not accepted. This is for a realistic approach as items will never have negative prices and/or quantities in real life.
+    * What it does: Allows the user to update values of an item in the shopping list. Such values include the description, price and quantity of an item.
+    * Justification: This feature improves the product significantly because a user may make mistakes when adding an item (e.g typos made) and the app should provide a convenient way to rectify such mistakes.
+    * Highlights: This enhancement allows the user to update any value of an item as the edit command does not require any order in its input (e.g alphabetical ordering of delimiters).
+* **Minor enhancement 1:** Negative values entered for price and quantity are not accepted. This is for a realistic approach as items will never have negative prices and/or quantities in a real life scenario.
 
 * **Major enhancement 2:** Added the **help function** for the SHOCO application.
-    * What it does: Lists all acceptable commands, their various purpose, valid parameters and examples of usage.   
-    * Justification: This feature improves the product significantly because a user may forget how certain functions work and so the app should provide a convenient way for users to check the accepted format.
-     With the help feature embedded in the application, users need not solely rely on the SHOCO User Guide
-    * Highlights: This enhancement includes examples of command usages which makes the various command format much more comprehensible to users.  
+    * What it does: Lists all acceptable commands, their purpose, valid parameters and examples of usage.   
+    * Justification: This feature improves the product significantly because the user may forget how certain functions work and so, the app should provide a convenient way for them to check the accepted format.
+     With the help feature embedded in the application, users need not solely rely on the SHOCO User Guide.
+    * Highlights: This enhancement includes examples of command usages which makes the accepted command formats much more comprehensible to the user.  
 
 * **Code contributed:** [[Functional code]](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/#search=trishaangelica&sort=groupTitle&sortWithin=title&since=2020-03-01&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=trishaangelica&tabRepo=AY1920S2-CS2113T-T13-1%2Ftp%5Bmaster%5D)
 
 
 * **Other contributions:** 
     * Project Management:
-        * Closed milestones v1.0 on GitHub
+        * Closed milestone v1.0 on GitHub
         * Assigned bugs and PRs to respective team members on GitHub. (Issues <ins>[#146-#162](https://github.com/AY1920S2-CS2113T-T13-1/tp/issues?q=is%3Aissue+is%3Aclosed+PE-D)</ins>)
     
     * Enhancements to existing features:
@@ -225,10 +225,10 @@ Reason for choosing alternative 1: By abstracting out different command types as
 
 &nbsp;
 
-## Appendix D: Instructions for Manual Testing
+### Appendix D: Instructions for Manual Testing
 > :information_source: These instructions only provide a starting point for testers to work on; testers are expected to do more _exploratory_ testing. 
 
-### Launch and Shutdown
+#### Launch and Shutdown
 1. Initial launch 
     
       i.    Download the [latest jar file](https://github.com/AY1920S2-CS2113T-T13-1/tp/releases).
@@ -258,7 +258,7 @@ Reason for choosing alternative 1: By abstracting out different command types as
    &nbsp;
 
 
-### Set and Reset a budget
+#### Set and Reset a budget
 
 1. Set a budget
        
@@ -301,7 +301,7 @@ Reason for choosing alternative 1: By abstracting out different command types as
      &nbsp;
 
     
-### Add and Edit an item
+#### Add and Edit an item
 
 1. Add an item 
         
@@ -358,7 +358,7 @@ Reason for choosing alternative 1: By abstracting out different command types as
      &nbsp;
     
   
-### Find and Delete an item
+#### Find and Delete an item
 
 1. Find an item based on keyword
        
@@ -391,7 +391,7 @@ Reason for choosing alternative 1: By abstracting out different command types as
      &nbsp;
 
 
-### Display and Clear the shopping list
+#### Display and Clear the shopping list
 
 1. List all items in the shopping list
             

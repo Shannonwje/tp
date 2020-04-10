@@ -296,13 +296,17 @@ Example: DEL 3
 
 Enter command:
 
+HELP: Shows program usage instructions.
+|| Parameters: HELP
+|| Example: HELP
+
+DISPLAY: Lists all items in the list.
+|| Parameters: DISPLAY
+|| Example: DISPLAY
+
 SET: Sets the budget based on user input.
 || Parameters: SET /b[BUDGET]
 || Example: SET /b 100.00
-
-RES: Resets the budget to $0.00.
-|| Parameters: RES
-|| Example: RES
 
 ADD: Adds an item to the list.
 || Parameters: ADD i/[DESCRIPTION] p/[PRICE] q/[QUANTITY]
@@ -331,17 +335,13 @@ DEL: Deletes an item in the list.
 || Parameters: DEL [INDEX]
 || Example: DEL 1
 
-DISPLAY: Lists all items in the list.
-|| Parameters: DISPLAY
-|| Example: DISPLAY
-
 CLEAR: Clears the list.
 || Parameters: CLEAR
 || Example: CLEAR
 
-HELP: Shows program usage instructions.
-|| Parameters: HELP
-|| Example: HELP
+RES: Resets the budget to $0.00.
+|| Parameters: RES
+|| Example: RES
 
 BYE: Exits the program.
 || Parameters: BYE
@@ -382,13 +382,17 @@ For the help command, just input "HELP".
 
 Enter command:
 
+HELP: Shows program usage instructions.
+|| Parameters: HELP
+|| Example: HELP
+
+DISPLAY: Lists all items in the list.
+|| Parameters: DISPLAY
+|| Example: DISPLAY
+
 SET: Sets the budget based on user input.
 || Parameters: SET /b[BUDGET]
 || Example: SET /b 100.00
-
-RES: Resets the budget to $0.00.
-|| Parameters: RES
-|| Example: RES
 
 ADD: Adds an item to the list.
 || Parameters: ADD i/[DESCRIPTION] p/[PRICE] q/[QUANTITY]
@@ -417,17 +421,13 @@ DEL: Deletes an item in the list.
 || Parameters: DEL [INDEX]
 || Example: DEL 1
 
-DISPLAY: Lists all items in the list.
-|| Parameters: DISPLAY
-|| Example: DISPLAY
-
 CLEAR: Clears the list.
 || Parameters: CLEAR
 || Example: CLEAR
 
-HELP: Shows program usage instructions.
-|| Parameters: HELP
-|| Example: HELP
+RES: Resets the budget to $0.00.
+|| Parameters: RES
+|| Example: RES
 
 BYE: Exits the program.
 || Parameters: BYE

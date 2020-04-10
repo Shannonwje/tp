@@ -4,39 +4,44 @@ By: `Team SHOCOTech`
 
 Since: `Feb 2020`
 
-Creators: `Trisha Labi` `Tan Kok Joon` `Jia Juin` `Joshua Loh` `Shannon Wong`
+Creators: `Tan Kok Joon`, `Labi Trisha Angelica Vergara`, `Loh Ching Wei, Joshua`, `Phoon Jia Juin`, `Wong Jin En, Shannon`
+
 <!-- @@author -->
+
+&nbsp;
 
 <!-- @@author trishaangelica -->
 ### Table of Contents
 * **[1. Introduction](#1-introduction)**
 * **[2. Overview of the SHOCO application](#2-overview-of-the-shoco-application)**
 * **[3. Implementation](#3-implementation)**
-    + [3.1 Add feature](#31-add-feature)
-    + [3.2 Edit feature](#32-edit-feature)
-    + [3.3 Delete feature](#33-delete-feature)
-    + [3.4 Find feature](#34-find-feature)
-    + [3.5 Mark and Unmark feature](#35-mark-and-unmark-feature)
-    + [3.6 Display feature](#36-display-feature)
-    + [3.7 Set budget feature](#37-set-budget-feature)
-    + [3.8 Reset budget feature](#38-reset-budget-feature)
+    + [3.1 View help feature](#31-view-help-feature)
+    + [3.2 Display feature](#32-display-feature)
+    + [3.3 Set budget feature](#33-set-budget-feature)
+    + [3.4 Add feature](#34-add-feature)
+    + [3.5 Edit feature](#35-edit-feature)
+    + [3.6 Mark and Unmark feature](#36-mark-and-unmark-feature)
+    + [3.7 Find feature](#37-find-feature)
+    + [3.8 Delete feature](#38-delete-feature)
     + [3.9 Clear list feature](#39-clear-list-feature)
-    + [3.10 View help feature](#310-view-help-feature)
+    + [3.10 Reset budget feature](#310-reset-budget-feature)
     + [3.11 Exit program feature](#311-exit-program-feature)
  * **[Appendix A: Product Scope](#appendix-a-product-scope)**
  * **[Appendix B: User Stories](#appendix-b-user-stories)**
  * **[Appendix C: Non-Functional Requirements](#appendix-c-non-functional-requirements)**
  * **[Appendix D: Instructions for Manual Testing](#appendix-d-instructions-for-manual-testing)**
-    + [Launch and ShutDown](#launch-and-shutdown)
+    + [Launch and Shutdown](#launch-and-shutdown)
     + [Set and Reset a budget](#set-and-reset-a-budget)
     + [Add and Edit an item](#add-and-edit-an-item)
     + [Mark and Un-Mark an item](#mark-and-un-mark-an-item)
     + [Find and Delete an item](#find-and-delete-an-item)
     + [Display and Clear the shopping list](#display-and-clear-the-shopping-list)
   
-    
  <!-- @@author -->
 
+&nbsp;
+
+***
 
 ## 1. Introduction
 
@@ -53,9 +58,10 @@ of SHOCO and is tailored for the developers, designers, and software testers of 
 &nbsp;
 
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
-&nbsp;
 
- <!-- @@author -->
+***
+
+<!-- @@author -->
 
 ## 2. Overview of the SHOCO application
 <!-- @@author Shannonwje -->
@@ -71,8 +77,8 @@ The <code>Duke</code> class manages all required resources in the execution of t
 a <code>ShoppingList</code> object to keep track of the <code>Item</code> objects the user has added to his list and
 a <code>Budget</code> object to store the user's budget.
 
-<code>Duke</code> also has a <code>Storage</code> object for saving and loading data from memory - this data includes
-the latest saved <code>ShoppingList</code> and <code>Budget</code>.
+<code>Duke</code> also has a <code>Storage</code> object for saving and loading data from the disk - this data is stored as JSON files
+and consists of the latest saved <code>ShoppingList</code> and <code>Budget</code>.
 
 There is a dependency from <code>Duke</code> to <code>Parser</code> as it only creates an instance of the <code>Parser</code>
 every time user input is received by the <code>Ui</code> and does not keep track of the <code>Parser</code> which is deleted
@@ -83,17 +89,176 @@ to <code>Duke</code>.
 At any point in time, <code>Duke</code> only stores up to one <code>Command</code> and no more. This
 <code>Command</code> has to be executed before <code>Duke</code> can receive more user input.
 <!-- @@author -->
+
 &nbsp;
 
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
-&nbsp;
+
+***
 
 ## 3. Implementation
 This section will describe how the main features of the application are implemented.
 
-<!-- @@author jiajuinphoon -->
-### 3.1 Add feature
+<!-- @@author trishaangelica -->
+### 3.1 View help feature
 #### 3.1.1 Current implementation
+
+The help feature is implemented using a <code>HelpCommand</code> class which extends the main
+<code>Command</code> class. The <code>HelpCommand</code> class shows the program usage instructions to the user.
+
+ The process is as follows:
+ 1. <code>Duke</code> receives user input from <code>Ui</code>.
+ 2. <code>Duke</code> calls <code>Parser#parseCommand()</code>. If the user input fails to match any of the 
+ correct command keywords (<code>ADD</code>, <code>EDIT</code>, <code>DEL</code> etc.), or if the input matches the 
+  <code>HELP</code> command keyword, a <code>HelpCommand</code> object will be instantiated.
+ 3. <code>Duke</code> calls <code>HelpCommand#execute()</code>.
+ 4. <code>HelpCommand#execute()</code> lists all the accepted command format SHOCO recognizes, their purpose and 1 or more examples
+of usage.
+
+The following sequence diagram below shows how the help feature works. Note, the <code>Ui</code> class is
+omitted in the sequence diagram to emphasise on the other classes:
+
+![Help Feature](images/Help_v1.png)
+
+#### 3.1.2 Design considerations
+
+##### Aspect: Data structure to support the help feature
+
+- Alternative 1 (current choice): Object-oriented style with a separate class for <code>HelpCommand</code>
+ 
+  - Pros: Easy to add the help feature without having to change the logic of the code much as each command
+  object is treated as a black box
+  
+  - Cons: Might significantly increase the code base with another class being added
+
+
+- Alternative 2: Implement help feature in the <code>Duke</code> or <code>Parser</code> class
+
+  - Pros: Will have less code to deal with as a new method is simply created in the <code>Duke</code> class
+  
+  - Cons: Code becomes less organised since for every other command that we have implemented, <code>Duke</code> class
+  simply executes those commands as black boxes, without worrying about their internal details
+
+Reason for choosing alternative 1: By abstracting out different command types as separate classes, we could work better
+in parallel and also be able to spot bugs more easily as each class deals with a different functionality
+ 
+&nbsp;
+
+<b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
+
+***
+
+<!-- @@author -->
+
+<!-- @@author JLoh579 -->
+### 3.2 Display feature
+This feature involves displaying the shopping list and budget details to the user.
+#### 3.2.1 Current implementation
+
+The display feature is implemented using a <code>DisplayCommand</code> class which extends the <code>Command</code> 
+class. 
+ 
+The process is as follows:
+1. <code>Duke</code> receives user input from <code>Ui</code>.
+2. <code>Duke</code> calls <code>Parser#parseCommand()</code> to instantiate a <code>DisplayCommand</code> object based
+on that user input.
+3. <code>Duke</code> then calls <code>DisplayCommand#execute()</code>.
+4. <code>DisplayCommand#execute()</code> makes a call to <code>ShoppingList#getTotalCost()</code> to find the cost of
+the items.
+5. <code>DisplayCommand#execute()</code> then calls  <code>Budget#getAmount()</code> and
+<code>Budget#getRemainingBudget()</code>  to find the current budget and the remaining budget. 
+6. The results are then printed to console.
+
+The following sequence diagrams below show how the display feature works. Note the <code>Ui</code> class is
+omitted to emphasise the other classes:
+
+![alt text](images/Display_v1.png)
+
+![alt text](images/Display_SD_v1.png)
+
+#### 3.2.2 Design considerations
+##### Aspect: Data structure to support the display feature
+
+- Alternative 1 (current choice): Object-oriented style with a separate class for <code>DisplayCommand</code>
+ 
+  - Pros: Easy to add the display feature without having to change the logic of the code much as each command object
+  is treated as a black box
+  
+  - Cons: Might significantly increase the code base with another class being added
+
+
+- Alternative 2: Implement display feature in the <code>Duke</code> class
+
+  - Pros: Will have less code to deal with as a new method is simply created in the <code>Duke</code> class
+  
+  - Cons: Handling the command under the <code>Duke</code> class results in longer methods. Thus, the code becomes 
+  harder to navigate and understand. 
+    
+Reason for choosing alternative 1: With each command type having its own class, we could work better in parallel and
+also be able to trace functionality bugs more easily if each command class deals with its own functionality.
+
+&nbsp;
+
+<b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
+
+***
+
+<!-- @@author -->
+
+<!-- @@author kokjoon97 -->
+### 3.3 Set budget feature
+#### 3.3.1 Current implementation
+
+The set budget feature is implemented using a <code>SetBudgetCommand</code> class which extends the main
+<code>Command</code> class with a variable representing the budget amount.
+
+The process is as follows:
+1. <code>Duke</code> receives user input from <code>Ui</code>.
+2. <code>Duke</code> calls <code>Parser#parseCommand()</code> to instantiate a <code>SetBudgetCommand</code> object based on that user input.
+3. <code>Duke</code> then calls <code>SetBudgetCommand#execute()</code>.
+4. <code>SetBudgetCommand#execute()</code> makes another call to <code>Budget#setBudget()</code>.
+5. The amount in the <code>Budget</code> object is set to the amount specified by the user.
+
+The following sequence diagram below shows how the set budget feature works. Note the <code>Ui</code> class is
+omitted in the sequence diagram to emphasise on the other classes:
+
+![alt text](images/Set_v1.png)
+
+
+#### 3.3.2 Design considerations
+
+##### Aspect: Data structure to support the set budget feature
+
+- Alternative 1 (current choice): Object-oriented style with a separate class for <code>SetBudgetCommand</code>
+ 
+  - Pros: Easy to add the set budget feature without having to change the logic of the code much as each command object
+  is treated as a black box
+  
+  - Cons: Might significantly increase the code base with another class being added
+
+
+- Alternative 2: Implement set budget feature in the <code>Duke</code> class
+
+  - Pros: Will have less code to deal with as a new method is simply created in the <code>Duke</code> class
+  
+  - Cons: Code becomes less organised since for every other command that we have implemented, <code>Duke</code> class
+  simply executes those commands as black boxes, without worrying about their internal details
+  
+Reason for choosing alternative 1: By implementing each command type in a separate class, any bugs associated with a
+particular functionality will not affect other functionalities that significantly. It would also make it easier for us to 
+work in parallel.
+ 
+&nbsp;
+
+<b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
+
+***
+
+<!-- @@author -->
+
+<!-- @@author jiajuinphoon -->
+### 3.4 Add feature
+#### 3.4.1 Current implementation
  
  The add feature is implemented using an <code>AddCommand</code> class. This class extends from the main
  <code>Command</code> class. The user input **must contain at least a description** out of these parameters: 
@@ -118,7 +283,7 @@ This section will describe how the main features of the application are implemen
  
  ![alt text](images/Add_SD_v1.png)
  
-#### 3.1.2 Design considerations
+#### 3.4.2 Design considerations
 
 ##### Aspect: Data structure to support the add feature
 
@@ -145,20 +310,22 @@ This section will describe how the main features of the application are implemen
   Also, duplicate items may confuse the user, even though in some specific scenario, duplicate item may be useful to 
   the user.  
  
- Reasons for choosing Alternative 1 over alternative 2: By allowing user to just add the item without price,
+ Reasons for choosing Alternative 1: By allowing user to just add the item without price,
  we can increase the flexibility. For instance, the user wants to buy milk but not sure how much does the milk
  cost and not sure how many milk they want to buy. So they can just add it into the list,
  and edit the price and quantity later when they knew the price and have decided the quantity. 
 
 &nbsp;
+
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
+
+***
+
 <!-- @@author -->
 
-&nbsp;
-
 <!-- @@author trishaangelica --> 
-### 3.2 Edit feature
-#### 3.2.1 Current implementation
+### 3.5 Edit feature
+#### 3.5.1 Current implementation
 
 The edit feature is implemented using an <code>EditCommand</code> class. This class extends from the main
 <code>Command</code> class. The <code>Item</code> object to be edited is identified by the index number provided 
@@ -186,7 +353,7 @@ have been omitted from the diagram. Those details are shown in a separate sequen
 ![Edit Feature SD](images/Edit_SD_v1.png)
 
 
-#### 3.2.2 Design considerations
+#### 3.5.2 Design considerations
 
 ##### Aspect: Data structure to support the edit feature
 
@@ -208,118 +375,17 @@ order.
 
 Reason for choosing alternative 1: By allowing users to update any values they want, it provides them with greater convenience and freedom as they do not need to follow strict command "rules/order". Furthermore, having greater freedom on input values makes it a hassle-free process for the users.
 
-
 &nbsp;
+
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
+
+***
+
 <!-- @@author -->
-
-&nbsp;
-
-<!-- @@author kokjoon97 --> 
-### 3.3 Delete feature
-#### 3.3.1 Current implementation
-
-The delete feature is implemented using a <code>DeleteCommand</code> class which extends the main
-<code>Command</code> class with an index representing that of the item to be deleted from the shopping
-list. 
-
-The process is as follows:
-1. <code>Duke</code> receives user input from <code>Ui</code>.
-2. <code>Duke</code> calls <code>Parser#parseCommand()</code> to instantiate a <code>DeleteCommand</code> object based
-on that user input.
-3. <code>Duke</code> then calls <code>DeleteCommand#execute()</code>.
-4. <code>DeleteCommand#execute()</code> makes another call to <code>ShoppingList#deleteItem()</code>.
-5. The <code>Item</code> at the specified index is then removed from the <code>ShoppingList</code> object.
-
-The following sequence diagram below shows how the delete feature works. Note the <code>Ui</code> class is
-omitted in the sequence diagram to emphasise on the other classes:
-
-![alt text](images/Delete_v1.png)
-
-#### 3.3.2 Design considerations
-
-##### Aspect: Data structure to support the delete feature
-
-- Alternative 1 (current choice): Object-oriented style with a separate class for <code>DeleteCommand</code>
- 
-  - Pros: Easy to add the delete feature without having to change the logic of the code much as each command object
-  is treated as a black box
-  
-  - Cons: Might significantly increase the code base with another class being added
-
-
-- Alternative 2: Implement delete feature in the <code>Duke</code> class
-
-  - Pros: Will have less code to deal with as a new method is simply created in the <code>Duke</code> class
-  
-  - Cons: Code becomes less organised since for every other command that we have implemented, <code>Duke</code> class
-    simply executes those commands as black boxes, without worrying about their internal details
-
-Reason for choosing alternative 1: By abstracting out different command types as separate classes, this allowed us
-to work better in parallel and also be able to spot bugs more easily as each class deals with a different functionality.
-
-&nbsp;
-<b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
-
-&nbsp;
-
-### 3.4 Find feature
-#### 3.4.1 Current implementation
-
-The find feature is implemented using a <code>FindCommand</code> class which extends the main
-<code>Command</code> class with a String representing the keyword specified by the user.
-
-The process is as follows:
-1. <code>Duke</code> receives user input from <code>Ui</code>.
-2. <code>Duke</code> calls <code>Parser#parseCommand()</code> to instantiate a <code>FindCommand</code> object based on
-that user input.
-3. <code>Duke</code> then calls <code>FindCommand#execute()</code>.
-4. <code>FindCommand#execute()</code> makes various calls to <code>ShoppingList#getItem()</code>
-to check whether the <code>Item</code> at each specified index contains the given keyword.
-5. Each <code>Item</code> that contains the keyword is then added to a new <code>ArrayList</code> named
- <code>filteredItems</code> that is maintained by the <code>FindCommand</code> object.
-6. This list of matching results is then printed to standard output.
-
-The following sequence diagram below shows how the <code>Duke</code> object creates the <code>FindCommand</code> object.
-Note the <code>Ui</code> class is omitted in the sequence diagram to emphasise on the other classes:
-
-![alt text](images/Find_v1.png)
-
-This next sequence diagram will show how the <code>FindCommand</code> creates the <code>filteredItems</code> list:
-
-![alt text](images/Find_SD_v1.png)
-
-#### 3.4.2 Design considerations
-
-##### Aspect: Data structure to support the find feature
-
-- Alternative 1 (current choice): Object-oriented style with a separate class for <code>FindCommand</code>
- 
-  - Pros: Easy to add the find feature without having to change the logic of the code much as each command object
-  is treated as a black box
-  
-  - Cons: Might significantly increase the code base with another class being added
-
-
-- Alternative 2: Implement find feature in the <code>Duke</code> class
-
-  - Pros: Will have less code to deal with as a new method is simply created in the <code>Duke</code> class
-  
-  - Cons: Code becomes less organised since for every other command that we have implemented, <code>Duke</code> class
-    simply executes those commands as black boxes, without worrying about their internal details
-    
-Reason for choosing alternative 1: With each command type having its own class, we could work better in parallel and
-also be able to trace functionality bugs more easily if each command class deals with a different functionality.
-<!-- @@author -->
-  
-&nbsp;
-<b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
-
-&nbsp;
 
 <!-- @@author Shannonwje --> 
-### 3.5 Mark and Unmark feature
-#### 3.5.1 Current Implementation
+### 3.6 Mark and Unmark feature
+#### 3.6.1 Current Implementation
   
  The mark and unmark feature is implemented using the <code>MarkCommand</code> and <code>UnmarkCommand</code> class
  which extends the main <code>Command</code> class with an index representing that of the item to be marked or
@@ -348,7 +414,7 @@ Diagram 2:
 ![alt text](images/Unmark_v1.png)
 
   
-#### 3.5.2 Design Considerations
+#### 3.6.2 Design Considerations
   
 ##### Aspect: Data structure to support the Mark and Unmark Feature
   
@@ -372,166 +438,120 @@ Reasons for choosing alternative 1: By having an individual class on it's own, a
 feature can be found easier and therefore helps to resolve the issue more efficiently. Also, with the feature being
 implemented in an object-oriented style, reading and tracing the application code would be easier, thus making adding
 future features to the mark and unmark feature easier as well.
-<!-- @@author -->
     
 &nbsp;
+
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
 
-&nbsp;
+***
 
-<!-- @@author JLoh579 -->
-### 3.6 Display feature
-This feature involves displaying the shopping list and budget details to the user.
-#### 3.6.1 Current implementation
-
-The display feature is implemented using a <code>DisplayCommand</code> class which extends the <code>Command</code> 
-class. 
- 
-The process is as follows:
-1. <code>Duke</code> receives user input from <code>Ui</code>.
-2. <code>Duke</code> calls <code>Parser#parseCommand()</code> to instantiate a <code>DisplayCommand</code> object based
-on that user input.
-3. <code>Duke</code> then calls <code>DisplayCommand#execute()</code>.
-4. <code>DisplayCommand#execute()</code> makes a call to <code>ShoppingList#getTotalCost()</code> to find the cost of
-the items.
-5. <code>DisplayCommand#execute()</code> then calls  <code>Budget#getAmount()</code> and
-<code>Budget#getRemainingBudget()</code>  to find the current budget and the remaining budget. 
-6. The results are then printed to console.
-
-The following sequence diagrams below show how the display feature works. Note the <code>Ui</code> class is
-omitted to emphasise the other classes:
-
-![alt text](images/Display_v1.png)
-
-![alt text](images/Display_SD_v1.png)
-
-#### 3.6.2 Design considerations
-##### Aspect: Data structure to support the display feature
-
-- Alternative 1 (current choice): Object-oriented style with a separate class for <code>DisplayCommand</code>
- 
-  - Pros: Easy to add the display feature without having to change the logic of the code much as each command object
-  is treated as a black box
-  
-  - Cons: Might significantly increase the code base with another class being added
-
-
-- Alternative 2: Implement display feature in the <code>Duke</code> class
-
-  - Pros: Will have less code to deal with as a new method is simply created in the <code>Duke</code> class
-  
-  - Cons: Handling the command under the <code>Duke</code> class results in longer methods. Thus, the code becomes 
-  harder to navigate and understand. 
-    
-Reason for choosing alternative 1: With each command type having its own class, we could work better in parallel and
-also be able to trace functionality bugs more easily if each command class deals with its own functionality.
 <!-- @@author -->
 
-&nbsp;
-<b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
-
-&nbsp;
-
-<!-- @@author kokjoon97 -->
-### 3.7 Set budget feature
+<!-- @@author kokjoon97 --> 
+### 3.7 Find feature
 #### 3.7.1 Current implementation
 
-The set budget feature is implemented using a <code>SetBudgetCommand</code> class which extends the main
-<code>Command</code> class with a variable representing the budget amount.
+The find feature is implemented using a <code>FindCommand</code> class which extends the main
+<code>Command</code> class with a String representing the keyword specified by the user.
 
 The process is as follows:
 1. <code>Duke</code> receives user input from <code>Ui</code>.
-2. <code>Duke</code> calls <code>Parser#parseCommand()</code> to instantiate a <code>SetBudgetCommand</code> object based on that user input.
-3. <code>Duke</code> then calls <code>SetBudgetCommand#execute()</code>.
-4. <code>SetBudgetCommand#execute()</code> makes another call to <code>Budget#setBudget()</code>.
-5. The amount in the <code>Budget</code> object is set to the amount specified by the user.
+2. <code>Duke</code> calls <code>Parser#parseCommand()</code> to instantiate a <code>FindCommand</code> object based on
+that user input.
+3. <code>Duke</code> then calls <code>FindCommand#execute()</code>.
+4. <code>FindCommand#execute()</code> makes various calls to <code>ShoppingList#getItem()</code>
+to check whether the <code>Item</code> at each specified index contains the given keyword.
+5. Each <code>Item</code> that contains the keyword is then added to a new <code>ArrayList</code> named
+ <code>filteredItems</code> that is maintained by the <code>FindCommand</code> object.
+6. This list of matching results is then printed to standard output.
 
-The following sequence diagram below shows how the set budget feature works. Note the <code>Ui</code> class is
-omitted in the sequence diagram to emphasise on the other classes:
+The following sequence diagram below shows how the <code>Duke</code> object creates the <code>FindCommand</code> object.
+Note the <code>Ui</code> class is omitted in the sequence diagram to emphasise on the other classes:
 
-![alt text](images/Set_v1.png)
+![alt text](images/Find_v1.png)
 
+This next sequence diagram will show how the <code>FindCommand</code> creates the <code>filteredItems</code> list:
+
+![alt text](images/Find_SD_v1.png)
 
 #### 3.7.2 Design considerations
 
-##### Aspect: Data structure to support the set budget feature
+##### Aspect: Data structure to support the find feature
 
-- Alternative 1 (current choice): Object-oriented style with a separate class for <code>SetBudgetCommand</code>
+- Alternative 1 (current choice): Object-oriented style with a separate class for <code>FindCommand</code>
  
-  - Pros: Easy to add the set budget feature without having to change the logic of the code much as each command object
+  - Pros: Easy to add the find feature without having to change the logic of the code much as each command object
   is treated as a black box
   
   - Cons: Might significantly increase the code base with another class being added
 
 
-- Alternative 2: Implement set budget feature in the <code>Duke</code> class
+- Alternative 2: Implement find feature in the <code>Duke</code> class
 
   - Pros: Will have less code to deal with as a new method is simply created in the <code>Duke</code> class
   
   - Cons: Code becomes less organised since for every other command that we have implemented, <code>Duke</code> class
-  simply executes those commands as black boxes, without worrying about their internal details
+    simply executes those commands as black boxes, without worrying about their internal details
+    
+Reason for choosing alternative 1: With each command type having its own class, we could work better in parallel and
+also be able to trace functionality bugs more easily if each command class deals with a different functionality.
   
-Reason for choosing alternative 1: By implementing each command type in a separate class, any bugs associated with a
-particular functionality will not affect other functionalities that significantly. It would also make it easier for us to 
-work in parallel.
-<!-- @@author -->
- 
 &nbsp;
+
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
 
-&nbsp;
+***
 
-<!-- @@author Shannonwje --> 
-### 3.8 Reset budget feature
+### 3.8 Delete feature
 #### 3.8.1 Current implementation
 
-The reset budget feature is implemented using a <code>ResetBudgetCommand</code> class which extends the main
-<code>Command</code> class with a variable representing the budget amount.
+The delete feature is implemented using a <code>DeleteCommand</code> class which extends the main
+<code>Command</code> class with an index representing that of the item to be deleted from the shopping
+list. 
 
 The process is as follows:
-1. <code>Duke</code> first receives user input from the <code>Ui</code> class.
-2. <code>Duke</code> creates a <code>Parser</code> object and calls <code>Parser#parseCommand()</code> method to
-instantiate a <code>ResetBudgetCommand</code> object based on that user input.
-3. <code>Duke</code> then calls the <code>ResetBudget#execute()</code> method.
-4. <code>ResetBudget#execute()</code> makes a call to the <code>Budget#resetBudget()</code> method to set the
-existing budget to $0.00.
+1. <code>Duke</code> receives user input from <code>Ui</code>.
+2. <code>Duke</code> calls <code>Parser#parseCommand()</code> to instantiate a <code>DeleteCommand</code> object based
+on that user input.
+3. <code>Duke</code> then calls <code>DeleteCommand#execute()</code>.
+4. <code>DeleteCommand#execute()</code> makes another call to <code>ShoppingList#deleteItem()</code>.
+5. The <code>Item</code> at the specified index is then removed from the <code>ShoppingList</code> object.
 
-The following sequence diagram below shows how the reset budget feature works. Note the <code>Ui</code> class is
+The following sequence diagram below shows how the delete feature works. Note the <code>Ui</code> class is
 omitted in the sequence diagram to emphasise on the other classes:
 
-![alt text](images/Res_v1.png)
-
+![alt text](images/Delete_v1.png)
 
 #### 3.8.2 Design considerations
 
-##### Aspect: Data structure to support the reset budget feature
+##### Aspect: Data structure to support the delete feature
 
-- Alternative 1 (current choice): Object-oriented style with a separate class for <code>ResetBudgetCommand</code>.
+- Alternative 1 (current choice): Object-oriented style with a separate class for <code>DeleteCommand</code>
  
-  - Pros: Easy to add the reset budget feature without having to change the logic of the code much as each command
-  object is treated as a black box.
+  - Pros: Easy to add the delete feature without having to change the logic of the code much as each command object
+  is treated as a black box
   
-  - Cons: Might significantly increase the code base with another class being added.
+  - Cons: Might significantly increase the code base with another class being added
 
 
-- Alternative 2: Implement reset budget feature in the <code>Duke</code> or <code>Parser</code> class.
+- Alternative 2: Implement delete feature in the <code>Duke</code> class
 
-  - Pros: Will have less code to deal with as a new method is simply created in the <code>Duke</code> class.
+  - Pros: Will have less code to deal with as a new method is simply created in the <code>Duke</code> class
   
   - Cons: Code becomes less organised since for every other command that we have implemented, <code>Duke</code> class
-  simply executes those commands as black boxes, without worrying about their internal details.
-  
-  
-Reason for choosing alternative 1: By implementing each command type in a separate class, any bugs associated with a 
-particular functionality will not affect other functionalities that significantly. It would also make it easier for us
-to work in parallel.
-  <!-- @@author -->
-  
+    simply executes those commands as black boxes, without worrying about their internal details
+
+Reason for choosing alternative 1: By abstracting out different command types as separate classes, this allowed us
+to work better in parallel and also be able to spot bugs more easily as each class deals with a different functionality.
+
 &nbsp;
+
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
 
-&nbsp;      
- 
+***
+
+<!-- @@author -->
+
 <!-- @@author JLoh579 -->
 ### 3.9 Clear list feature
 This feature involves clearing all items in the shopping list.
@@ -572,61 +592,69 @@ omitted to emphasise the other classes:
    
 Reason for choosing alternative 1: With each command type having its own class, we could work better in parallel and
 also be able to trace functionality bugs more easily if each command class deals with a different functionality.
-<!-- @@author -->
 
 &nbsp;
+
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
  
-&nbsp;
+***
+
+<!-- @@author -->
  
-<!-- @@author trishaangelica -->
-### 3.10 View help feature
+<!-- @@author Shannonwje --> 
+### 3.10 Reset budget feature
 #### 3.10.1 Current implementation
 
-The help feature is implemented using a <code>HelpCommand</code> class which extends the main
-<code>Command</code> class. The <code>HelpCommand</code> class shows the program usage instructions to the user.
+The reset budget feature is implemented using a <code>ResetBudgetCommand</code> class which extends the main
+<code>Command</code> class with a variable representing the budget amount.
 
- The process is as follows:
- 1. <code>Duke</code> receives user input from <code>Ui</code>.
- 2. <code>Duke</code> calls <code>Parser#parseCommand()</code>. If the user input fails to match any of the 
- correct command keywords (<code>ADD</code>, <code>EDIT</code>, <code>DEL</code> etc.), or if the input matches the 
-  <code>HELP</code> command keyword, a <code>HelpCommand</code> object will be instantiated.
- 3. <code>Duke</code> calls <code>HelpCommand#execute()</code>.
- 4. <code>HelpCommand#execute()</code> lists all the accepted command format SHOCO recognizes, their purpose and 1 or more examples
-of usage.
+The process is as follows:
+1. <code>Duke</code> first receives user input from the <code>Ui</code> class.
+2. <code>Duke</code> creates a <code>Parser</code> object and calls <code>Parser#parseCommand()</code> method to
+instantiate a <code>ResetBudgetCommand</code> object based on that user input.
+3. <code>Duke</code> then calls the <code>ResetBudget#execute()</code> method.
+4. <code>ResetBudget#execute()</code> makes a call to the <code>Budget#resetBudget()</code> method to set the
+existing budget to $0.00.
 
-The following sequence diagram below shows how the help feature works. Note, the <code>Ui</code> class is
+The following sequence diagram below shows how the reset budget feature works. Note the <code>Ui</code> class is
 omitted in the sequence diagram to emphasise on the other classes:
 
-![Help Feature](images/Help_v1.png)
+![alt text](images/Res_v1.png)
+
 
 #### 3.10.2 Design considerations
 
-##### Aspect: Data structure to support the help feature
+##### Aspect: Data structure to support the reset budget feature
 
-- Alternative 1 (current choice): Object-oriented style with a separate class for <code>HelpCommand</code>
+- Alternative 1 (current choice): Object-oriented style with a separate class for <code>ResetBudgetCommand</code>.
  
-  - Pros: Easy to add the help feature without having to change the logic of the code much as each command
-  object is treated as a black box
+  - Pros: Easy to add the reset budget feature without having to change the logic of the code much as each command
+  object is treated as a black box.
   
-  - Cons: Might significantly increase the code base with another class being added
+  - Cons: Might significantly increase the code base with another class being added.
 
 
-- Alternative 2: Implement help feature in the <code>Duke</code> or <code>Parser</code> class
+- Alternative 2: Implement reset budget feature in the <code>Duke</code> or <code>Parser</code> class.
 
-  - Pros: Will have less code to deal with as a new method is simply created in the <code>Duke</code> class
+  - Pros: Will have less code to deal with as a new method is simply created in the <code>Duke</code> class.
   
   - Cons: Code becomes less organised since for every other command that we have implemented, <code>Duke</code> class
-  simply executes those commands as black boxes, without worrying about their internal details
-
-Reason for choosing alternative 1: By abstracting out different command types as separate classes, we could work better
-in parallel and also be able to spot bugs more easily as each class deals with a different functionality
- 
+  simply executes those commands as black boxes, without worrying about their internal details.
+  
+  
+Reason for choosing alternative 1: By implementing each command type in a separate class, any bugs associated with a 
+particular functionality will not affect other functionalities that significantly. It would also make it easier for us
+to work in parallel.
+  
 &nbsp;
+
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
 
-&nbsp;
-
+***
+ 
+<!-- @@author -->
+  
+<!-- @@author trishaangelica -->
 ### 3.11 Exit program feature
 #### 3.11.1 Current implementation
 
@@ -662,14 +690,17 @@ omitted in the sequence diagram to emphasise on the other classes:
   - Cons: Code becomes less organised since for every other command that we have implemented, <code>Duke</code> class
   simply executes those commands as black boxes, without worrying about their internal details
 
-- Reason for choosing alternative 1: By abstracting out different command types as separate classes, we could work
+Reason for choosing alternative 1: By abstracting out different command types as separate classes, we could work
 better in parallel and also be able to spot bugs more easily as each class deals with a different functionality
 
 &nbsp;
+
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
+
+***
+
 <!-- @@author -->
 
-&nbsp;
 <!-- @@author kokjoon97 -->
 ## Appendix A: Product Scope
 This section talks about who this product is specially designed for and what it aims to achieve.
@@ -689,12 +720,11 @@ shopping lists and also providing helpful features like budget tracking
 
 <!-- @@author -->
 
-
 &nbsp;
+
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
 
-
-&nbsp;
+***
 
 ## Appendix B: User Stories
 This section contains the user stories for the different versions of our product.
@@ -722,9 +752,11 @@ This section contains the user stories for the different versions of our product
 |v2.0|frugal home cook|see the remaining budget update based on the quantity of items|see how much I spend based on how much I buy|
 
 &nbsp;
+
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
 
-&nbsp;
+***
+
 <!-- @@author kokjoon97 -->
 ## Appendix C: Non-Functional Requirements
 
@@ -734,9 +766,10 @@ This section contains the user stories for the different versions of our product
 <!-- @@author -->
 
 &nbsp;
+
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
 
-&nbsp;
+***
 
 <!-- @@author trishaangelica-->
 ## Appendix D: Instructions for Manual Testing
@@ -757,25 +790,19 @@ This section contains the user stories for the different versions of our product
             
         Expected: Shows a welcome message from SHOCO.
 
-
    &nbsp;
 
 2. Shutdown
         
       i.    Enter the command <code>BYE</code> to exit the SHOCO application.
-                
-      ii.   Close the command terminal.
-        
-        Expected: Data is stored to shoppinglist.json and budget.json, the program is terminated.
+
+        Expected: The program is terminated.
   
-
    &nbsp;
-
     
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
      
-&nbsp;
-
+***
 
 ### Set and Reset a budget
 
@@ -821,8 +848,8 @@ This section contains the user stories for the different versions of our product
      
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
      
-&nbsp;        
-    
+***
+
 ### Add and Edit an item
 
 1. Add an item 
@@ -882,7 +909,8 @@ This section contains the user stories for the different versions of our product
  
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
      
-&nbsp;    
+***
+
 <!-- @@author -->
 
 <!-- @@author Shannonwje -->    
@@ -947,8 +975,8 @@ This section contains the user stories for the different versions of our product
      
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
      
-&nbsp;
-     
+***
+
 <!-- @@author -->
     
 <!-- @@author trishaangelica-->  
@@ -987,7 +1015,7 @@ This section contains the user stories for the different versions of our product
 
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
 
-&nbsp;
+***
 
 ### Display and Clear the shopping list
 
@@ -1008,6 +1036,5 @@ This section contains the user stories for the different versions of our product
       &nbsp;
   
 <b><a href="#shoco-v21---developer-guide">&#129053; back to top</a></b>
-  
-&nbsp;   
+
 <!-- @@author -->
