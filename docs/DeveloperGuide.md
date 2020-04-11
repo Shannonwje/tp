@@ -70,7 +70,7 @@ Omitted are the classes for the features implemented, the <code>LoadData</code>
 class, <code>WriteData</code> class, <code>FileUtil</code> class and
 <code>CommandLineTable</code> class.
 <!-- @@author -->
-![alt text](images/ClassDiagram_v1.png)
+![alt text](images/ClassDiagram_v2.png)
 
 <!-- @@author kokjoon97 -->
 The <code>Duke</code> class manages all required resources in the execution of the application. These include
@@ -118,7 +118,7 @@ of usage.
 The following sequence diagram below shows how the help feature works. Note, the <code>Ui</code> class is
 omitted in the sequence diagram to emphasise on the other classes:
 
-![Help Feature](images/Help_v1.png)
+![Help Feature](images/Help_v2.png)
 
 #### 3.1.2 Design considerations
 
@@ -172,9 +172,9 @@ the items.
 The following sequence diagrams below show how the display feature works. Note the <code>Ui</code> class is
 omitted to emphasise the other classes:
 
-![alt text](images/Display_v1.png)
+![alt text](images/Display_v2.png)
 
-![alt text](images/Display_SD_v1.png)
+![alt text](images/Display_SD_v2.png)
 
 #### 3.2.2 Design considerations
 ##### Aspect: Data structure to support the display feature
@@ -222,7 +222,7 @@ The process is as follows:
 The following sequence diagram below shows how the set budget feature works. Note the <code>Ui</code> class is
 omitted in the sequence diagram to emphasise on the other classes:
 
-![alt text](images/Set_v1.png)
+![alt text](images/Set_v3.png)
 
 
 #### 3.3.2 Design considerations
@@ -279,9 +279,9 @@ work in parallel.
  The following sequence diagram below shows how the add feature works. The details of adding item's values
  are shown in a separate sequence diagram below:
  
- ![alt text](images/Add_v1.png)
+ ![alt text](images/Add_v2.png)
  
- ![alt text](images/Add_SD_v1.png)
+ ![alt text](images/Add_SD_v2.png)
  
 #### 3.4.2 Design considerations
 
@@ -346,11 +346,11 @@ with the new values from the user input through the use of the <code>Item</code>
 The following sequence diagram below shows how the edit feature works. The details of updating the values of an item
 have been omitted from the diagram. Those details are shown in a separate sequence diagram.
 
-![Edit Feature](images/Edit_v1.png)
+![Edit Feature](images/Edit_v2.png)
 
  The separate sequence diagram below shows how an item is updated with new values.
 
-![Edit Feature SD](images/Edit_SD_v1.png)
+![Edit Feature SD](images/Edit_SD_v2.png)
 
 
 #### 3.5.2 Design considerations
@@ -407,11 +407,11 @@ Reason for choosing alternative 1: By allowing users to update any values they w
   
  Diagram 1:
  
-![alt text](images/Mark_v1.png)
+![alt text](images/Mark_v2.png)
   
 Diagram 2:
 
-![alt text](images/Unmark_v1.png)
+![alt text](images/Unmark_v2.png)
 
   
 #### 3.6.2 Design Considerations
@@ -468,11 +468,11 @@ to check whether the <code>Item</code> at each specified index contains the give
 The following sequence diagram below shows how the <code>Duke</code> object creates the <code>FindCommand</code> object.
 Note the <code>Ui</code> class is omitted in the sequence diagram to emphasise on the other classes:
 
-![alt text](images/Find_v1.png)
+![alt text](images/Find_v3.png)
 
 This next sequence diagram will show how the <code>FindCommand</code> creates the <code>filteredItems</code> list:
 
-![alt text](images/Find_SD_v1.png)
+![alt text](images/Find_SD_v3.png)
 
 #### 3.7.2 Design considerations
 
@@ -520,7 +520,7 @@ on that user input.
 The following sequence diagram below shows how the delete feature works. Note the <code>Ui</code> class is
 omitted in the sequence diagram to emphasise on the other classes:
 
-![alt text](images/Delete_v1.png)
+![alt text](images/Delete_v3.png)
 
 #### 3.8.2 Design considerations
 
@@ -569,7 +569,7 @@ The process is as follows:
 The following sequence diagram below shows how the clear list feature works. Note the <code>Ui</code> class is
 omitted to emphasise the other classes:
    
-![alt text](images/Clear_v1.png)
+![alt text](images/Clear_v2.png)
    
 #### 3.9.2 Design considerations
    
@@ -619,7 +619,7 @@ existing budget to $0.00.
 The following sequence diagram below shows how the reset budget feature works. Note the <code>Ui</code> class is
 omitted in the sequence diagram to emphasise on the other classes:
 
-![alt text](images/Res_v1.png)
+![alt text](images/Res_v2.png)
 
 
 #### 3.10.2 Design considerations
@@ -669,7 +669,7 @@ The program termination feature is implemented using an <code>ExitCommand</code>
 The following sequence diagram below shows how the exit feature works. Note the <code>Ui</code> class is
 omitted in the sequence diagram to emphasise on the other classes:
 
-![alt text](images/Exit_v1.png)
+![alt text](images/Exit_v2.png)
 
 #### 3.11.2 Design considerations
 
