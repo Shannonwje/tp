@@ -61,7 +61,7 @@ public class ShoppingList {
     }
 
     /**
-     * Clear all items from the list.
+     * Clears all items from the list.
      */
     public void clearList() {
         items.clear();

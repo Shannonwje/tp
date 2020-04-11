@@ -23,10 +23,10 @@ import java.util.regex.Pattern;
 
 public class Parser {
 
-    private static final String regex = "^(?<index>[ \\d]+[^a-zA-Z\\/])"
-                + "|i\\/(?<description>[a-zA-Z  \\d]+[^ipq\\/\\n]+)"
-                + "|p\\/(?<price>[\\d .a-hj-or-zA-HJ-OR-Z-]+|[^ipqIPQ\\/\\n])+"
-                + "|q\\/(?<quantity>[\\d .a-hj-or-zA-HJ-OR-Z-]+|[^ipqIPQ\\/])|$;";
+    private static final String regex = "^(?<index>[\\d ]*[^a-zA-Z\\/])"
+            + "|i\\/(?<description>(?=)(?:(?!p\\/)(?!q\\/).)+)"
+            + "|p\\/(?<price>(?=)(?:(?!i\\/)(?!q\\/).)+)+"
+            + "|q\\/(?<quantity>(?=)(?:(?!p\\/)(?!i\\/).)+)|$;";
 
     private static final Pattern EDIT_ITEM_ARGS_FORMAT = Pattern.compile(regex, Pattern.MULTILINE);
     private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
@@ -535,6 +535,7 @@ public class Parser {
 
         if (pricePresent) {
             if (arrToCheck[2] != null) {
+
                 if (Double.parseDouble(arrToCheck[2]) > 0) {
                     validPrice = true;
                 }

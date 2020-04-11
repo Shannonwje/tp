@@ -1,3 +1,5 @@
+//@@author JLoh579
+
 package seedu.duke.utils;
 
 import java.io.BufferedReader;
@@ -7,17 +9,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-//@@author JLoh579
 /**
- * File utility class.
+ * Performs tasks of a low level of abstraction involved in saving and loading.
  */
 public class FileUtil {
 
     /**
-     * Write to file.
+     * Writes the JSON string to a file. File is created if it does not already exist.
      *
-     * @param jsonStr Data to be stored.
-     * @param filename File that stores the data.
+     * @param jsonStr String containing the data.
+     * @param filename String representing the file that would store the data.
      */
     public static void writeFile(String jsonStr, String filename) {
         File file = new File(filename);
@@ -27,7 +28,7 @@ public class FileUtil {
             }
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
 
-            // Split large strings into smaller strings for memory efficiency
+            // Split into smaller strings for memory efficiency
             for (String lineStr : jsonStr.split("\n")) {
                 bufferedWriter.write(lineStr);
                 bufferedWriter.newLine();
@@ -39,10 +40,10 @@ public class FileUtil {
     }
 
     /**
-     * Read from file.
+     * Reads data from a file. Returns null if the file does not exist.
      *
-     * @param filename File to be read from.
-     * @return A buffered reader.
+     * @param filename String representing the file to be read from.
+     * @return A buffered reader object containing the data.
      */
     public static BufferedReader readFile(String filename) {
         File file = new File(filename);

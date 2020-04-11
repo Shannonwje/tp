@@ -4,9 +4,9 @@
 
 ## Overview
 
-SHOCO is a desktop application used for the managing and planning of shopping lists and budgets. Users interact with it through the use of a command-line interface (CLI), the program is written in Java and has bout 5 kLoC.
+SHOCO is a desktop application used for managing and planning of shopping lists and budgets. Users interact with it through the use of a command-line interface (CLI), the program is written in Java and has bout 5 kLoC.
 
-### Summary of Contributions
+## Summary of Contributions
 * **Major enhancement 1:** Included the **ability to edit items** in the shopping list.
     * What it does: Allows the user to update values of an item in the shopping list. Such values include the description, price and quantity of an item.
     * Justification: This feature improves the product significantly because a user may make mistakes when adding an item (e.g typos made) and the app should provide a convenient way to rectify such mistakes.
@@ -15,26 +15,26 @@ SHOCO is a desktop application used for the managing and planning of shopping li
 
 * **Major enhancement 2:** Added the **help function** for the SHOCO application.
     * What it does: Lists all acceptable commands, their purpose, valid parameters and examples of usage.   
-    * Justification: This feature improves the product significantly because the user may forget how certain functions work and so, the app should provide a convenient way for them to check the accepted format.
-     With the help feature embedded in the application, users need not solely rely on the SHOCO User Guide.
+    * Justification: This feature improves the product significantly because the user may forget how certain functions work and so, the app should provide a convenient way for them to check on the accepted command format.
+     With the help feature embedded in the application, users need not solely rely on the SHOCO User Guide for help when they are in doubt.
     * Highlights: This enhancement includes examples of command usages which makes the accepted command formats much more comprehensible to the user.  
 
-* **Code contributed:** [[Functional code]](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/#search=trishaangelica&sort=groupTitle&sortWithin=title&since=2020-03-01&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=trishaangelica&tabRepo=AY1920S2-CS2113T-T13-1%2Ftp%5Bmaster%5D)
+* **Code contributed:** [[Functional code]](https://nus-cs2113-ay1920s2.github.io/tp-dashboard/#breakdown=true&search=trishaangelica&sort=groupTitle&sortWithin=title&since=2020-03-01&timeframe=commit&mergegroup=false&groupSelect=groupByRepos&tabOpen=true&tabType=authorship&tabAuthor=trishaangelica&tabRepo=AY1920S2-CS2113T-T13-1%2Ftp%5Bmaster%5D)
 
 
 * **Other contributions:** 
     * Project Management:
-        * Closed milestone v1.0 on GitHub
-        * Assigned bugs and PRs to respective team members on GitHub. (Issues <ins>[#146-#162](https://github.com/AY1920S2-CS2113T-T13-1/tp/issues?q=is%3Aissue+is%3Aclosed+PE-D)</ins>)
+        * Closed milestones v1.0 and v2.1 on GitHub
+        * Assigned bugs and PRs to respective team members on GitHub. (Issues <ins>[#145-#162](https://github.com/AY1920S2-CS2113T-T13-1/tp/issues?q=is%3Aissue+is%3Aclosed+PE-D)</ins>)
     
     * Enhancements to existing features:
-        * Included test cases for all commands in input.txt file (Pull Request <ins>[#69](https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/69/files#diff-cc5b0804a9a39fce149b1b64e58378db)</ins>)
-        * Added SHOCO logo for the application (Pull request <ins>[#88](https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/88/files)</ins>)
-        * Changed original list display to pretty-printing in a table (*Reused code from logicbig*) (Pull request <ins>[#54](https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/54/files#diff-f5a2a66f3d795321ea951828c239db70)</ins>)
+        * Included test cases for all commands in input.txt file (Pull Request <ins>[#69](https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/69)</ins>)
+        * Added SHOCO logo for the application (Pull request <ins>[#88](https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/88)</ins>)
+        * Changed original list display to pretty-printing in a table (*Reused code from logicbig*) (Pull request <ins>[#54](https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/54)</ins>)
         
     * Documentation:
-        * Added a navigable table of contents and "back to top" links for both SHOCO user guide and developer guide: <ins>[#111]((https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/111))</ins> , <ins>[#112](https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/112/files)</ins> , <ins>[#122](https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/122/files)</ins>
-        * Organized the "skeletal" base of the DG in order to provide team members with allocated sections for easier collaboration <ins>[#114](https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/114/files)</ins>
+        * Added a navigable table of contents and "back to top" links for both SHOCO user guide and developer guide: <ins>[#111](https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/111)</ins> , <ins>[#112](https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/112)</ins> , <ins>[#122](https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/122)</ins>
+        * Organized the "skeletal" base of the DG in order to provide the team with allocated sections for easier collaboration <ins>[#114](https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/114)</ins>
         * Standardized colour and font of all diagrams in the DG for comprehensibility <ins>[#191](https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/191)</ins> , <ins>[#210](https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/210)</ins>
         * Added the Manual Testing Section of the DG <ins>[#204](https://github.com/AY1920S2-CS2113T-T13-1/tp/pull/204)</ins>
            
@@ -45,7 +45,7 @@ SHOCO is a desktop application used for the managing and planning of shopping li
         * Reported feature flaws, documentation bugs and functionality bugs of varying severity for other project teams. (Pull requests <ins>[#1 - #6](https://github.com/trishaangelica/ped/issues)</ins>)
 
 
-### Contributions to the User Guide
+## Contributions to the User Guide
 > *Given below are sections that I have contributed to the User Guide. 
 > They showcase my ability to write documentation targeting end-users.*
 
@@ -81,7 +81,7 @@ SHOCO is a desktop application used for the managing and planning of shopping li
  * The `INDEX` and `[QUANTITY]` must be a **positive number**. *e.g 1, 2, 3 ..*
  * The `[PRICE]` must be in **positive numerical** form (decimal form accepted).
  * **At least one** of the three parameters (description/price/quantity) must be present in the command.
- > :information_source: You can rearrange the delimiters i/, p/ , q/ in <em>any</em> order. e.g `i/.. p/.. q/..` or `q/.. i/.. p/..`.
+> :information_source: Note: You can rearrange the delimiters i/, p/ , q/ in <em>any</em> order. e.g `i/.. p/.. q/..` or `q/.. i/.. p/..`.
  
  Examples of usage: 
  
@@ -94,15 +94,13 @@ SHOCO is a desktop application used for the managing and planning of shopping li
      
  3. `EDIT 3 i/potato chips` **OR** `EDIT 3 p/5.00` **OR** `EDIT 3 q/2`
      * Edits only description / only price / only quantity of the 3rd item in the shopping list
-     
- &nbsp;
+
 
 #### Viewing help: `HELP`
 Shows the available commands, their purpose and how they are to be used.
 
 Format: `HELP`
 
-&nbsp;
 
 #### Command Summary
 
@@ -119,17 +117,40 @@ Format: `HELP`
 * View help `HELP`
 * Exit program `BYE`
 
-&nbsp;
-
 ---
 
-### Contributions to the Developer Guide
+## Contributions to the Developer Guide
 > *Given below are sections that I have contributed to the User Guide. 
 > They showcase my ability to write documentation targeting end-users.*
  
-&nbsp;
-### 3.2 Edit feature
-#### 3.2.1 Current implementation
+### Table of Contents
+ * **[1. Introduction](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#1-introduction)**
+ * **[2. Overview of the SHOCO application](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#2-overview-of-the-shoco-application)**
+ * **[3. Implementation](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#3-implementation)**
+     + [3.1 View help feature](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#31-view-help-feature)
+     + [3.2 Display feature](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#32-display-feature)
+     + [3.3 Set budget feature](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#33-set-budget-feature)
+     + [3.4 Add feature](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#34-add-feature)
+     + [3.5 Edit feature](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#35-edit-feature)
+     + [3.6 Mark and Unmark feature](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#36-mark-and-unmark-feature)
+     + [3.7 Find feature](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#37-find-feature)
+     + [3.8 Delete feature](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#38-delete-feature)
+     + [3.9 Clear list feature](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#39-clear-list-feature)
+     + [3.10 Reset budget feature](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#310-reset-budget-feature)
+     + [3.11 Exit program feature](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#311-exit-program-feature)
+  * **[Appendix A: Product Scope](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#appendix-a-product-scope)**
+  * **[Appendix B: User Stories](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#appendix-b-user-stories)**
+  * **[Appendix C: Non-Functional Requirements](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#appendix-c-non-functional-requirements)**
+  * **[Appendix D: Instructions for Manual Testing](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#appendix-d-instructions-for-manual-testing)**
+     + [Launch and Shutdown](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#launch-and-shutdown)
+     + [Set and Reset a budget](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#set-and-reset-a-budget)
+     + [Add and Edit an item](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#add-and-edit-an-item)
+     + [Mark and Un-Mark an item](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#mark-and-un-mark-an-item)
+     + [Find and Delete an item](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#find-and-delete-an-item)
+     + [Display and Clear the shopping list](https://github.com/AY1920S2-CS2113T-T13-1/tp/blob/master/docs/DeveloperGuide.md#display-and-clear-the-shopping-list)
+
+#### 3.2 Edit feature
+##### 3.2.1 Current implementation
 
 The edit feature is implemented using an <code>EditCommand</code> class. This class extends from the main
 <code>Command</code> class. The <code>Item</code> object to be edited is identified by the index number provided 
@@ -150,14 +171,14 @@ with the new values from the user input through the use of the <code>Item</code>
 The following sequence diagram below shows how the edit feature works. The details of updating the values of an item
 have been omitted from the diagram. Those details are shown in a separate sequence diagram.
 
-![Edit Feature](../images/Edit_v1.png)
+![Edit Feature](../images/Edit_v1_PPP.png)
 
- The separate sequence diagram below shows how an item is updated with new values.
+The separate sequence diagram below shows how an item is updated with new values.
 
-![Edit Feature SD](../images/Edit_SD_v1.png)
+![Edit Feature SD](../images/Edit_SD_v1_PPP.png)
 
 
-#### 3.2.2 Design considerations
+##### 3.2.2 Design considerations
 
 ##### Aspect: Data structure to support the edit feature
 
@@ -179,11 +200,10 @@ order.
 
 Reason for choosing alternative 1: By allowing users to update any values they want, it provides them with greater convenience and freedom as they do not need to follow strict command "rules/order". Furthermore, having greater freedom on input values makes it a hassle-free process for the users.
 
-
 &nbsp;
  
-### 3.10 View help feature
-#### 3.10.1 Current implementation
+#### 3.10 View help feature
+##### 3.10.1 Current implementation
 
 The help feature is implemented using a <code>HelpCommand</code> class which extends the main
 <code>Command</code> class. The <code>HelpCommand</code> class shows the program usage instructions to the user.
@@ -200,9 +220,9 @@ of usage.
 The following sequence diagram below shows how the help feature works. Note, the <code>Ui</code> class is
 omitted in the sequence diagram to emphasise on the other classes:
 
-![Help Feature](../images/Help_v1.png)
+![Help Feature](../images/Help_v1_PPP.png)
 
-#### 3.10.2 Design considerations
+##### 3.10.2 Design considerations
 
 ##### Aspect: Data structure to support the help feature
 
@@ -225,39 +245,34 @@ Reason for choosing alternative 1: By abstracting out different command types as
 
 &nbsp;
 
-### Appendix D: Instructions for Manual Testing
-> :information_source: These instructions only provide a starting point for testers to work on; testers are expected to do more _exploratory_ testing. 
+#### Appendix D: Instructions for Manual Testing
+> :information_source: Note: These instructions only provide a starting point for testers to work on; testers are expected to do more _exploratory_ testing. 
 
 #### Launch and Shutdown
 1. Initial launch 
     
-      i.    Download the [latest jar file](https://github.com/AY1920S2-CS2113T-T13-1/tp/releases).
+      i.    Download the [latest](https://github.com/AY1920S2-CS2113T-T13-1/tp/releases) version of `SHOCO`, named <code>CS2113T-T13-1.Shoco.jar</code> under version 2.1.
         
       ii.   Copy it into an empty folder on your desktop.
         
       iii.  While inside the empty folder, open a command prompt window by typing <code>CMD</code> in the address bar of the folder.
         
-      iv.   Run the command <code>java -jar SHOCO.jar</code>
+      iv.   Run the following command in the command prompt window: `java -jar CS2113T-T13-1.Shoco.jar`
       
-      v.    If the font size of the command window is too big, you can make it smaller by <code>CTRL + scroll down</code> on your mouse.
+      v.    If the font size of the command window is too big, you can decrease it by <code>CTRL + scroll down</code> on your mouse.
             
         Expected: Shows a welcome message from SHOCO.
-
 
    &nbsp;
 
 2. Shutdown
         
       i.    Enter the command <code>BYE</code> to exit the SHOCO application.
-                
-      ii.   Close the command terminal.
-        
-        Expected: Data is stored to shoppinglist.json and budget.json, the program is terminated.
+
+        Expected: The program is terminated.
   
-
    &nbsp;
-
-
+   
 #### Set and Reset a budget
 
 1. Set a budget
@@ -311,7 +326,7 @@ Reason for choosing alternative 1: By abstracting out different command types as
        
        Expected: An item with the description - "apple", price - "$3.00" and quantity - "2"  is added.
          
-     > :bulb: You can run the <code>DISPLAY</code> command to check the newly added item.
+     > :bulb: Tip: You can run the <code>DISPLAY</code> command to check the newly added item.
                                                            
     &nbsp;
 

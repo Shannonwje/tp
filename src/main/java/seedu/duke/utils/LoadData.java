@@ -11,15 +11,18 @@ import seedu.duke.data.ShoppingList;
 import java.io.BufferedReader;
 import java.lang.reflect.Type;
 
+/**
+ * Performs reading tasks which are one level of abstraction below that of the Storage class.
+ */
 public class LoadData {
     private static final String SHOPPING_LIST_FILENAME = "shoppinglist.json";
     private static final String BUDGET_FILENAME = "budget.json";
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     /**
-     * Return a shopping list object based on stored data.
+     * Returns a shopping list object based on stored data.
      *
-     * @return Shopping list.
+     * @return The object containing the shopping list.
      */
     public ShoppingList readShoppingList() {
         BufferedReader bufferedReader = FileUtil.readFile(SHOPPING_LIST_FILENAME);
@@ -35,9 +38,9 @@ public class LoadData {
     }
 
     /**
-     * Return a budget object based on stored data.
+     * Returns a budget object based on stored data.
      *
-     * @return Budget.
+     * @return The object containing the budget.
      */
     public Budget readBudget() {
         BufferedReader bufferedReader = FileUtil.readFile(BUDGET_FILENAME);

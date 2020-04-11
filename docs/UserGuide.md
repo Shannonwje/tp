@@ -61,10 +61,11 @@ grocery shopping disappear.
 ## Quick Start
 1. Ensure that you have Java 11 or above installed. Otherwise download it from
 [here](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
-2. Download the latest version of `SHOCO` from [here](https://github.com/AY1920S2-CS2113T-T13-1/tp/releases), named `SHOCO.jar` under version 2.0.
-3. Open the command prompt in the directory of the executable SHOCO and type in the following command:
-   `java -jar SHOCO.jar`
-4. You are now all set to plan your shopping list!
+2. Download the latest version of `SHOCO` from [here](https://github.com/AY1920S2-CS2113T-T13-1/tp/releases), named `CS2113T-T13-1.Shoco.jar` under version 2.1.
+3. Copy the JAR file into an empty folder
+4. Open the command prompt in the empty folder and type in the following command:
+   `java -jar CS2113T-T13-1.Shoco.jar`
+5. You are now all set to plan your shopping list!
 
 &nbsp;
 
@@ -162,7 +163,7 @@ Format: `ADD i/DESCRIPTION [p/PRICE] [q/QUANTITY]`
 * `[PRICE]` and `[QUANTITY]` are optional values, user can choose to provide the 
   respective values or omit them. The system will set the price and quantity to 
   the default values `0.0` and `1` if omitted.
-> :information_source: You can rearrange the delimiters i/, p/ , q/ in <em>any</em> order. e.g `i/.. p/.. q/..` or `q/.. i/.. p/..`.
+> :information_source: Note: You can rearrange the delimiters i/, p/ , q/ in <em>any</em> order. e.g `i/.. p/.. q/..` or `q/.. i/.. p/..`.
 
 Examples of usage: 
 
@@ -199,7 +200,7 @@ shown in the displayed shopping list.
 * Indices that are not numbers or are out of bounds will produce an error message indicating the error of the index.
 * The `[PRICE]` must be in **positive numerical** form (decimal form accepted).
 * **At least one** of the three parameters (description/price/quantity) must be present in the command.
-> :information_source: You can rearrange the delimiters i/, p/ , q/ in <em>any</em> order. e.g `i/.. p/.. q/..` or `q/.. i/.. p/..`.
+> :information_source: Note: You can rearrange the delimiters i/, p/ , q/ in <em>any</em> order. e.g `i/.. p/.. q/..` or `q/.. i/.. p/..`.
 
 Examples of usage: 
 

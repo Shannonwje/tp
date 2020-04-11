@@ -773,20 +773,20 @@ This section contains the user stories for the different versions of our product
 
 <!-- @@author trishaangelica-->
 ## Appendix D: Instructions for Manual Testing
-> :information_source: These instructions only provide a starting point for testers to work on; testers are expected to do more _exploratory_ testing. 
+> :information_source: Note: These instructions only provide a starting point for testers to work on; testers are expected to do more _exploratory_ testing. 
 
 ### Launch and Shutdown
 1. Initial launch 
     
-      i.    Download the [latest jar file](https://github.com/AY1920S2-CS2113T-T13-1/tp/releases).
+      i.    Download the [latest](https://github.com/AY1920S2-CS2113T-T13-1/tp/releases) version of `SHOCO`, named <code>CS2113T-T13-1.Shoco.jar</code> under version 2.1.
         
       ii.   Copy it into an empty folder on your desktop.
         
       iii.  While inside the empty folder, open a command prompt window by typing <code>CMD</code> in the address bar of the folder.
         
-      iv.   Run the command <code>java -jar SHOCO.jar</code>
+      iv.   Run the following command in the command prompt window: `java -jar CS2113T-T13-1.Shoco.jar`
       
-      v.    If the font size of the command window is too big, you can make it smaller by <code>CTRL + scroll down</code> on your mouse.
+      > :bulb: Tip: If the font size of the terminal is too big, you can decrease it by <code>CTRL + scroll down</code> on your mouse.
             
         Expected: Shows a welcome message from SHOCO.
 
@@ -860,7 +860,7 @@ This section contains the user stories for the different versions of our product
        
        Expected: An item with the description - "apple", price - "$3.00" and quantity - "2"  is added.
          
-     > :bulb: You can run the <code>DISPLAY</code> command to check the newly added item.
+     > :bulb: Tip: You can run the <code>DISPLAY</code> command to check the newly added item.
                                                            
     &nbsp;
 
